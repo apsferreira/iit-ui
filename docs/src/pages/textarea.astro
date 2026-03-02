@@ -1,0 +1,71 @@
+---
+import DocsLayout from '../layouts/DocsLayout.astro'
+import ComponentDemo from '../components/ComponentDemo.astro'
+import PropsTable from '../components/PropsTable.astro'
+
+const textareaProps = [
+  { name: 'label', type: 'string', default: '—', description: 'Label do campo' },
+  { name: 'helperText', type: 'string', default: '—', description: 'Texto auxiliar' },
+  { name: 'error', type: 'string', default: '—', description: 'Mensagem de erro' },
+  { name: 'showCount', type: 'boolean', default: 'false', description: 'Exibe contagem de caracteres' },
+  { name: 'maxLength', type: 'number', default: '—', description: 'Limite máximo de caracteres' },
+  { name: 'disabled', type: 'boolean', default: 'false', description: 'Desabilita o campo' },
+]
+---
+<DocsLayout title="Textarea">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-[#0D1B26] mb-2">Textarea</h1>
+    <p class="text-[#4A6070] text-base">Campo de texto multilinha com suporte a label, erro e contagem de caracteres.</p>
+    <code class="text-xs font-mono text-[#0097D6] bg-[#EBF4FB] px-2 py-1 rounded mt-2 inline-block">import {'{ Textarea }'} from '@iit/ui'</code>
+  </div>
+
+  <h2 class="text-lg font-semibold text-[#0D1B26] mb-4">Variantes</h2>
+
+  <ComponentDemo title="Default" code={`<Textarea placeholder="Digite aqui..." />`}>
+    <div class="w-80">
+      <textarea class="w-full rounded-lg border border-[#D0DDE6] bg-white px-3 py-2 text-sm text-[#0D1B26] placeholder:text-[#8A9FAF] resize-y min-h-[80px] focus:outline-none focus:ring-2 focus:ring-[#0097D6]" placeholder="Digite aqui..."></textarea>
+    </div>
+  </ComponentDemo>
+
+  <ComponentDemo title="Com label" code={`<Textarea label="Observações" placeholder="Descreva..." />`}>
+    <div class="w-80 flex flex-col gap-1.5">
+      <label class="text-sm font-medium text-[#0D1B26]">Observações</label>
+      <textarea class="w-full rounded-lg border border-[#D0DDE6] bg-white px-3 py-2 text-sm text-[#0D1B26] placeholder:text-[#8A9FAF] resize-y min-h-[80px] focus:outline-none focus:ring-2 focus:ring-[#0097D6]" placeholder="Descreva suas observações..."></textarea>
+    </div>
+  </ComponentDemo>
+
+  <ComponentDemo title="Com erro" code={`<Textarea label="Mensagem" error="Campo obrigatório" />`}>
+    <div class="w-80 flex flex-col gap-1.5">
+      <label class="text-sm font-medium text-[#0D1B26]">Mensagem</label>
+      <textarea class="w-full rounded-lg border border-red-400 bg-white px-3 py-2 text-sm text-[#0D1B26] resize-y min-h-[80px] focus:outline-none focus:ring-2 focus:ring-red-500" aria-invalid="true"></textarea>
+      <p class="text-xs text-red-500" role="alert">Campo obrigatório</p>
+    </div>
+  </ComponentDemo>
+
+  <ComponentDemo title="Com showCount e maxLength" code={`<Textarea label="Bio" showCount maxLength={160} />`}>
+    <div class="w-80 flex flex-col gap-1.5">
+      <label class="text-sm font-medium text-[#0D1B26]">Bio</label>
+      <textarea id="ta-count" maxlength="160" class="w-full rounded-lg border border-[#D0DDE6] bg-white px-3 py-2 text-sm text-[#0D1B26] placeholder:text-[#8A9FAF] resize-y min-h-[80px] focus:outline-none focus:ring-2 focus:ring-[#0097D6]" placeholder="Fale sobre você..."></textarea>
+      <div class="flex justify-end">
+        <span id="ta-count-display" class="text-xs text-[#8A9FAF]">0/160</span>
+      </div>
+    </div>
+    <script>
+      const ta = document.getElementById('ta-count')
+      const display = document.getElementById('ta-count-display')
+      ta?.addEventListener('input', () => {
+        display.textContent = `${ta.value.length}/160`
+      })
+    </script>
+  </ComponentDemo>
+
+  <ComponentDemo title="Disabled" code={`<Textarea disabled label="Notas" value="Somente leitura" />`}>
+    <div class="w-80 flex flex-col gap-1.5">
+      <label class="text-sm font-medium text-[#0D1B26]">Notas</label>
+      <textarea disabled class="w-full rounded-lg border border-[#D0DDE6] bg-white px-3 py-2 text-sm text-[#0D1B26] resize-y min-h-[80px] opacity-40 cursor-not-allowed">Somente leitura</textarea>
+    </div>
+  </ComponentDemo>
+
+  <h2 class="text-lg font-semibold text-[#0D1B26] mb-4 mt-8">Props</h2>
+  <PropsTable props={textareaProps} />
+</DocsLayout>

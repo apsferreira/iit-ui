@@ -1,0 +1,91 @@
+---
+import DocsLayout from '../layouts/DocsLayout.astro'
+import ComponentDemo from '../components/ComponentDemo.astro'
+import PropsTable from '../components/PropsTable.astro'
+import ButtonDemo from '../components/demos/ButtonDemo'
+
+const buttonProps = [
+  { name: 'variant', type: "'primary' | 'secondary' | 'ghost' | 'destructive' | 'accent'", default: "'primary'", description: 'Estilo visual do botão' },
+  { name: 'size', type: "'sm' | 'md' | 'lg'", default: "'md'", description: 'Tamanho do botão' },
+  { name: 'isLoading', type: 'boolean', default: 'false', description: 'Exibe spinner de carregamento e desabilita o botão' },
+  { name: 'disabled', type: 'boolean', default: 'false', description: 'Desabilita o botão' },
+  { name: 'leftIcon', type: 'ReactNode', default: '—', description: 'Ícone à esquerda do label' },
+  { name: 'rightIcon', type: 'ReactNode', default: '—', description: 'Ícone à direita do label' },
+]
+---
+<DocsLayout title="Button">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-[#0D1B26] mb-2">Button</h1>
+    <p class="text-[#4A6070] text-base">Componente de botão com 5 variantes, 3 tamanhos, estados de loading e suporte a ícones.</p>
+    <code class="text-xs font-mono text-[#0097D6] bg-[#EBF4FB] px-2 py-1 rounded mt-2 inline-block">import {'{ Button }'} from '@iit/ui'</code>
+  </div>
+
+  <h2 class="text-lg font-semibold text-[#0D1B26] mb-4">Variantes</h2>
+
+  <ComponentDemo title="primary" code={`<Button variant="primary">Salvar</Button>`}>
+    <button class="inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-150 h-9 px-4 text-sm bg-[#0097D6] text-white shadow-sm">Salvar</button>
+  </ComponentDemo>
+
+  <ComponentDemo title="secondary" code={`<Button variant="secondary">Cancelar</Button>`}>
+    <button class="inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-150 h-9 px-4 text-sm bg-[#F5F8FA] text-[#0D1B26] border border-[#D0DDE6]">Cancelar</button>
+  </ComponentDemo>
+
+  <ComponentDemo title="accent" code={`<Button variant="accent">Confirmar</Button>`}>
+    <button class="inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-150 h-9 px-4 text-sm bg-[#00D6A0] text-white shadow-sm">Confirmar</button>
+  </ComponentDemo>
+
+  <ComponentDemo title="ghost" code={`<Button variant="ghost">Ver mais</Button>`}>
+    <button class="inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-150 h-9 px-4 text-sm text-[#4A6070] hover:bg-[#F5F8FA]">Ver mais</button>
+  </ComponentDemo>
+
+  <ComponentDemo title="destructive" code={`<Button variant="destructive">Excluir</Button>`}>
+    <button class="inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-150 h-9 px-4 text-sm bg-red-50 text-red-600 border border-red-200">Excluir</button>
+  </ComponentDemo>
+
+  <h2 class="text-lg font-semibold text-[#0D1B26] mb-4 mt-8">Tamanhos</h2>
+
+  <ComponentDemo title="sm / md / lg" code={`<Button size="sm">Pequeno</Button>\n<Button size="md">Médio</Button>\n<Button size="lg">Grande</Button>`}>
+    <button class="inline-flex items-center justify-center rounded-lg font-medium h-7 px-3 text-xs bg-[#0097D6] text-white">Pequeno</button>
+    <button class="inline-flex items-center justify-center rounded-lg font-medium h-9 px-4 text-sm bg-[#0097D6] text-white">Médio</button>
+    <button class="inline-flex items-center justify-center rounded-lg font-medium h-11 px-6 text-base bg-[#0097D6] text-white">Grande</button>
+  </ComponentDemo>
+
+  <h2 class="text-lg font-semibold text-[#0D1B26] mb-4 mt-8">Estados</h2>
+
+  <ComponentDemo title="disabled" code={`<Button disabled>Desabilitado</Button>`}>
+    <button disabled class="inline-flex items-center justify-center rounded-lg font-medium h-9 px-4 text-sm bg-[#0097D6] text-white opacity-40 cursor-not-allowed">Desabilitado</button>
+  </ComponentDemo>
+
+  <ComponentDemo title="isLoading" code={`<Button isLoading>Carregando</Button>`}>
+    <button disabled class="inline-flex items-center justify-center gap-2 rounded-lg font-medium h-9 px-4 text-sm bg-[#0097D6] text-white opacity-80">
+      <svg class="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+      </svg>
+      Carregando
+    </button>
+  </ComponentDemo>
+
+  <h2 class="text-lg font-semibold text-[#0D1B26] mb-4 mt-8">Com Ícones</h2>
+
+  <ComponentDemo title="leftIcon / rightIcon" code={`<Button leftIcon={<span>💾</span>}>Salvar</Button>\n<Button rightIcon={<span>→</span>} variant="ghost">Próximo</Button>`}>
+    <button class="inline-flex items-center justify-center gap-2 rounded-lg font-medium h-9 px-4 text-sm bg-[#0097D6] text-white">
+      <span>💾</span> Salvar
+    </button>
+    <button class="inline-flex items-center justify-center gap-2 rounded-lg font-medium h-9 px-4 text-sm text-[#4A6070] hover:bg-[#F5F8FA]">
+      Próximo <span>→</span>
+    </button>
+    <button class="inline-flex items-center justify-center gap-2 rounded-lg font-medium h-9 px-4 text-sm bg-[#00D6A0] text-white">
+      <span>✅</span> Aprovar
+    </button>
+    <button class="inline-flex items-center justify-center gap-2 rounded-lg font-medium h-9 px-4 text-sm bg-red-50 text-red-600 border border-red-200">
+      <span>🗑️</span> Excluir
+    </button>
+  </ComponentDemo>
+
+  <h2 class="text-lg font-semibold text-[#0D1B26] mb-4 mt-8">Demo interativo</h2>
+  <ButtonDemo client:load />
+
+  <h2 class="text-lg font-semibold text-[#0D1B26] mb-4 mt-8">Props</h2>
+  <PropsTable props={buttonProps} />
+</DocsLayout>

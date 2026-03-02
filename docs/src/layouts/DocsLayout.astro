@@ -1,0 +1,87 @@
+---
+export interface Props {
+  title: string
+  description?: string
+}
+const { title, description = 'IIT Design System — Documentação de componentes' } = Astro.props
+const currentPath = Astro.url.pathname
+
+const navItems = [
+  { href: '/', label: 'Visão Geral', icon: '🎨' },
+  { href: '/button', label: 'Button', icon: '🔘' },
+  { href: '/card', label: 'Card', icon: '🃏' },
+  { href: '/input', label: 'Input', icon: '✏️' },
+  { href: '/badge', label: 'Badge', icon: '🏷️' },
+  { href: '/select', label: 'Select', icon: '📋' },
+  { href: '/textarea', label: 'Textarea', icon: '📝' },
+  { href: '/modal', label: 'Modal', icon: '🪟' },
+  { href: '/skeleton', label: 'Skeleton', icon: '💀' },
+]
+
+function isActive(href: string) {
+  if (href === '/') return currentPath === '/' || currentPath === ''
+  return currentPath.startsWith(href)
+}
+---
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title} — IIT Design System</title>
+  <meta name="description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-[#F5F8FA] text-[#0D1B26] font-sans min-h-screen">
+
+  <header class="fixed top-0 left-0 right-0 z-50 h-16 bg-white border-b border-[#D0DDE6] flex items-center px-6 gap-4 shadow-sm">
+    <div class="flex items-center gap-3">
+      <img src="/logo-iit.png" alt="IIT" class="h-8 w-auto" />
+      <div class="h-6 w-px bg-[#D0DDE6]"></div>
+      <span class="font-semibold text-[#0D1B26] text-sm tracking-tight">IIT Design System</span>
+      <span class="text-xs font-mono text-[#8A9FAF] bg-[#F5F8FA] border border-[#D0DDE6] px-2 py-0.5 rounded-full">v0.1.0</span>
+    </div>
+    <div class="ml-auto text-xs text-[#8A9FAF]">
+      <span class="hidden sm:inline font-mono">@iit/ui</span>
+    </div>
+  </header>
+
+  <div class="flex pt-16 min-h-screen">
+    <aside class="fixed left-0 top-16 bottom-0 w-60 bg-white border-r border-[#D0DDE6] overflow-y-auto z-40">
+      <nav class="p-4">
+        <p class="text-xs font-semibold text-[#8A9FAF] uppercase tracking-widest mb-3 px-2">Navegação</p>
+        <ul class="space-y-0.5">
+          {navItems.map(item => (
+            <li>
+              <a
+                href={item.href}
+                class={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-100 ${
+                  isActive(item.href)
+                    ? 'bg-[#EBF4FB] text-[#0097D6]'
+                    : 'text-[#4A6070] hover:bg-[#F5F8FA] hover:text-[#0D1B26]'
+                }`}
+              >
+                <span class="text-base">{item.icon}</span>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <div class="border-t border-[#D0DDE6] p-4 mt-2">
+        <p class="text-xs text-[#8A9FAF]">Instituto Itinerante</p>
+        <p class="text-xs font-mono text-[#0097D6] mt-0.5">#0097D6 · #00D6A0</p>
+      </div>
+    </aside>
+
+    <main class="ml-60 flex-1 p-8">
+      <div class="max-w-4xl">
+        <slot />
+      </div>
+    </main>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+---
+import DocsLayout from '../layouts/DocsLayout.astro'
+import ComponentDemo from '../components/ComponentDemo.astro'
+import PropsTable from '../components/PropsTable.astro'
+
+const cardProps = [
+  { name: 'hoverable', type: 'boolean', default: 'false', description: 'Adiciona transição de borda e fundo no hover' },
+  { name: 'className', type: 'string', default: '—', description: 'Classes adicionais via className' },
+]
+---
+<DocsLayout title="Card">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-[#0D1B26] mb-2">Card</h1>
+    <p class="text-[#4A6070] text-base">Contêiner com bordas e elevação para agrupar conteúdo relacionado. Suporte a Header, Body e Footer.</p>
+    <code class="text-xs font-mono text-[#0097D6] bg-[#EBF4FB] px-2 py-1 rounded mt-2 inline-block">import {'{ Card, CardHeader, CardTitle, CardBody, CardFooter }'} from '@iit/ui'</code>
+  </div>
+
+  <h2 class="text-lg font-semibold text-[#0D1B26] mb-4">Variantes</h2>
+
+  <ComponentDemo title="Default" code={`<Card>\n  <CardBody>Conteúdo do card</CardBody>\n</Card>`} noPad>
+    <div class="p-6">
+      <div class="rounded-xl border border-[#2A2A38] bg-[#111118] text-[#F4F4F8] shadow-sm w-64 p-6">
+        Conteúdo do card
+      </div>
+    </div>
+  </ComponentDemo>
+
+  <ComponentDemo title="Com Header e Footer" code={`<Card>\n  <CardHeader><CardTitle>Título</CardTitle></CardHeader>\n  <CardBody>Corpo do card</CardBody>\n  <CardFooter>Rodapé</CardFooter>\n</Card>`} noPad>
+    <div class="p-6">
+      <div class="rounded-xl border border-[#2A2A38] bg-[#111118] text-[#F4F4F8] shadow-sm w-72">
+        <div class="flex flex-col gap-1.5 p-6 pb-0">
+          <h3 class="text-lg font-semibold leading-tight text-[#F4F4F8]">Título do Card</h3>
+          <p class="text-sm text-[#A1A1B5]">Descrição opcional do card</p>
+        </div>
+        <div class="p-6 text-sm text-[#A1A1B5]">Corpo do card com o conteúdo principal.</div>
+        <div class="flex items-center p-6 pt-0 gap-2">
+          <button class="text-xs bg-[#0097D6] text-white px-3 py-1.5 rounded-lg font-medium">Ação</button>
+          <button class="text-xs text-[#A1A1B5] px-3 py-1.5 rounded-lg font-medium border border-[#2A2A38]">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </ComponentDemo>
+
+  <ComponentDemo title="hoverable" code={`<Card hoverable>\n  <CardBody>Card com hover</CardBody>\n</Card>`} noPad>
+    <div class="p-6">
+      <div class="rounded-xl border border-[#2A2A38] bg-[#111118] text-[#F4F4F8] shadow-sm w-64 p-6 transition-colors duration-150 hover:border-[#3A3A50] hover:bg-[#18181F] cursor-pointer">
+        Passe o mouse aqui 🖱️
+      </div>
+    </div>
+  </ComponentDemo>
+
+  <ComponentDemo title="Apenas Body (sem Header/Footer)" code={`<Card>\n  <CardBody>\n    <p>Simples e direto</p>\n  </CardBody>\n</Card>`} noPad>
+    <div class="p-6 flex gap-4 flex-wrap">
+      <div class="rounded-xl border border-[#2A2A38] bg-[#111118] text-[#F4F4F8] shadow-sm w-48 p-6 text-sm text-[#A1A1B5]">
+        Simples e direto, sem header.
+      </div>
+      <div class="rounded-xl border border-[#2A2A38] bg-[#111118] text-[#F4F4F8] shadow-sm w-48">
+        <div class="p-6 pb-0">
+          <h3 class="text-sm font-semibold text-[#F4F4F8]">Só Header</h3>
+        </div>
+        <div class="p-6 text-sm text-[#A1A1B5]">Sem footer.</div>
+      </div>
+    </div>
+  </ComponentDemo>
+
+  <h2 class="text-lg font-semibold text-[#0D1B26] mb-4 mt-8">Props</h2>
+  <PropsTable props={cardProps} />
+</DocsLayout>
