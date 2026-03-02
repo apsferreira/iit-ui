@@ -20,7 +20,7 @@ spec:
         runAsUser: 101  # nginx user
       containers:
         - name: storybook
-          image: ghcr.io/apsferreira/iit-storybook:latest
+          image: ghcr.io/apsferreira/iit-storybook:sha-8a6a2c8
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
