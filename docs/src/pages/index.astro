@@ -1,0 +1,150 @@
+---
+import DocsLayout from '../layouts/DocsLayout.astro'
+import ColorSwatch from '../components/ColorSwatch.astro'
+
+const colorGroups = [
+  {
+    title: 'Brand',
+    colors: [
+      { name: 'brand.primary', hex: '#0097D6' },
+      { name: 'brand.primaryLight', hex: '#33ADE0' },
+      { name: 'brand.primaryDark', hex: '#006FA3' },
+      { name: 'brand.secondary', hex: '#00D6A0' },
+      { name: 'brand.secondaryLight', hex: '#33DEB3' },
+      { name: 'brand.secondaryDark', hex: '#00A87E' },
+    ]
+  },
+  {
+    title: 'Surface',
+    colors: [
+      { name: 'surface.base', hex: '#FFFFFF' },
+      { name: 'surface.subtle', hex: '#F5F8FA' },
+      { name: 'surface.elevated', hex: '#EBF4FB' },
+      { name: 'surfaceDark.base', hex: '#0A0F14' },
+      { name: 'surfaceDark.subtle', hex: '#111820' },
+      { name: 'surfaceDark.elevated', hex: '#1A2530' },
+    ]
+  },
+  {
+    title: 'Text',
+    colors: [
+      { name: 'text.primary', hex: '#0D1B26' },
+      { name: 'text.secondary', hex: '#4A6070' },
+      { name: 'text.muted', hex: '#8A9FAF' },
+      { name: 'text.onBrand', hex: '#FFFFFF' },
+    ]
+  },
+  {
+    title: 'Border',
+    colors: [
+      { name: 'border.default', hex: '#D0DDE6' },
+      { name: 'border.subtle', hex: '#EBF2F7' },
+      { name: 'border.brand', hex: '#0097D6' },
+    ]
+  },
+  {
+    title: 'Status',
+    colors: [
+      { name: 'status.success', hex: '#00D6A0' },
+      { name: 'status.successBg', hex: '#E6FAF5' },
+      { name: 'status.warning', hex: '#F59E0B' },
+      { name: 'status.warningBg', hex: '#FEF3C7' },
+      { name: 'status.error', hex: '#EF4444' },
+      { name: 'status.errorBg', hex: '#FEE2E2' },
+      { name: 'status.info', hex: '#0097D6' },
+      { name: 'status.infoBg', hex: '#EBF4FB' },
+    ]
+  },
+]
+---
+<DocsLayout title="Visão Geral">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-[#0D1B26] mb-2">IIT Design System</h1>
+    <p class="text-[#4A6070] text-lg">Biblioteca de componentes do Instituto Itinerante de Tecnologia.</p>
+    <div class="flex gap-3 mt-4">
+      <span class="inline-flex items-center gap-1.5 text-xs font-mono bg-[#EBF4FB] text-[#006FA3] px-3 py-1.5 rounded-full border border-[#0097D6]/20">
+        ⚡ React 18
+      </span>
+      <span class="inline-flex items-center gap-1.5 text-xs font-mono bg-[#E6FAF5] text-[#00A87E] px-3 py-1.5 rounded-full border border-[#00D6A0]/20">
+        🎨 Tailwind CSS
+      </span>
+      <span class="inline-flex items-center gap-1.5 text-xs font-mono bg-[#F5F8FA] text-[#4A6070] px-3 py-1.5 rounded-full border border-[#D0DDE6]">
+        📦 TypeScript
+      </span>
+    </div>
+  </div>
+
+  <!-- Paleta de cores -->
+  {colorGroups.map(group => (
+    <div class="mb-8">
+      <h2 class="text-lg font-semibold text-[#0D1B26] mb-4 flex items-center gap-2">
+        <span class="w-1 h-5 rounded-full bg-[#0097D6] inline-block"></span>
+        {group.title}
+      </h2>
+      <div class="flex flex-wrap gap-4">
+        {group.colors.map(color => (
+          <ColorSwatch name={color.name} hex={color.hex} />
+        ))}
+      </div>
+    </div>
+  ))}
+
+  <!-- Tipografia -->
+  <div class="mt-10 mb-8">
+    <h2 class="text-lg font-semibold text-[#0D1B26] mb-4 flex items-center gap-2">
+      <span class="w-1 h-5 rounded-full bg-[#00D6A0] inline-block"></span>
+      Tipografia
+    </h2>
+
+    <div class="rounded-xl border border-[#D0DDE6] bg-white overflow-hidden mb-6">
+      <div class="border-b border-[#D0DDE6] px-5 py-3 bg-[#F5F8FA]">
+        <span class="text-sm font-semibold text-[#0D1B26]">Inter — font-sans</span>
+      </div>
+      <div class="p-6 space-y-4">
+        <div class="flex items-baseline gap-4">
+          <span class="text-xs text-[#8A9FAF] w-20 shrink-0">4xl · 700</span>
+          <p class="text-4xl font-bold text-[#0D1B26] font-sans">Instituto Itinerante</p>
+        </div>
+        <div class="flex items-baseline gap-4">
+          <span class="text-xs text-[#8A9FAF] w-20 shrink-0">3xl · 600</span>
+          <p class="text-3xl font-semibold text-[#0D1B26] font-sans">Design System</p>
+        </div>
+        <div class="flex items-baseline gap-4">
+          <span class="text-xs text-[#8A9FAF] w-20 shrink-0">2xl · 600</span>
+          <p class="text-2xl font-semibold text-[#0D1B26] font-sans">Componentes UI</p>
+        </div>
+        <div class="flex items-baseline gap-4">
+          <span class="text-xs text-[#8A9FAF] w-20 shrink-0">xl · 500</span>
+          <p class="text-xl font-medium text-[#0D1B26] font-sans">Heading de seção</p>
+        </div>
+        <div class="flex items-baseline gap-4">
+          <span class="text-xs text-[#8A9FAF] w-20 shrink-0">lg · 500</span>
+          <p class="text-lg font-medium text-[#4A6070] font-sans">Subtitle e labels</p>
+        </div>
+        <div class="flex items-baseline gap-4">
+          <span class="text-xs text-[#8A9FAF] w-20 shrink-0">base · 400</span>
+          <p class="text-base font-normal text-[#4A6070] font-sans">Texto de corpo padrão para parágrafos e descrições.</p>
+        </div>
+        <div class="flex items-baseline gap-4">
+          <span class="text-xs text-[#8A9FAF] w-20 shrink-0">sm · 400</span>
+          <p class="text-sm font-normal text-[#8A9FAF] font-sans">Helper text e legendas menores.</p>
+        </div>
+        <div class="flex items-baseline gap-4">
+          <span class="text-xs text-[#8A9FAF] w-20 shrink-0">xs · 400</span>
+          <p class="text-xs font-normal text-[#8A9FAF] font-sans">Microcopy, labels de badge e timestamps.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="rounded-xl border border-[#D0DDE6] bg-white overflow-hidden">
+      <div class="border-b border-[#D0DDE6] px-5 py-3 bg-[#F5F8FA]">
+        <span class="text-sm font-semibold text-[#0D1B26]">JetBrains Mono — font-mono</span>
+      </div>
+      <div class="p-6 space-y-3">
+        <p class="text-base font-normal text-[#0097D6] font-mono">import &#123; Button &#125; from '@iit/ui'</p>
+        <p class="text-sm font-normal text-[#00D6A0] font-mono">&lt;Button variant="primary" size="md"&gt;Clique aqui&lt;/Button&gt;</p>
+        <p class="text-xs font-normal text-[#8A9FAF] font-mono">// brand.primary: #0097D6 | brand.secondary: #00D6A0</p>
+      </div>
+    </div>
+  </div>
+</DocsLayout>

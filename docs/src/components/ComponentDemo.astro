@@ -1,0 +1,24 @@
+---
+export interface Props {
+  title: string
+  code: string
+  description?: string
+  noPad?: boolean
+}
+const { title, code, description, noPad = false } = Astro.props
+---
+<div class="rounded-xl border border-[#D0DDE6] bg-white overflow-hidden mb-6">
+  <div class="border-b border-[#D0DDE6] px-5 py-3 flex items-center justify-between bg-[#F5F8FA]">
+    <span class="text-sm font-semibold text-[#0D1B26]">{title}</span>
+    {description && <span class="text-xs text-[#8A9FAF]">{description}</span>}
+  </div>
+  <div class={noPad ? '' : 'p-6 flex flex-wrap gap-4 items-center'}>
+    <slot />
+  </div>
+  <details class="border-t border-[#D0DDE6]">
+    <summary class="px-5 py-2.5 text-xs font-mono text-[#8A9FAF] cursor-pointer hover:text-[#0097D6] select-none bg-[#F5F8FA]">
+      Ver código
+    </summary>
+    <pre class="bg-[#0A0F14] text-white p-5 text-xs font-mono overflow-x-auto leading-relaxed"><code>{code}</code></pre>
+  </details>
+</div>

@@ -1,0 +1,76 @@
+---
+import DocsLayout from '../layouts/DocsLayout.astro'
+import ComponentDemo from '../components/ComponentDemo.astro'
+import PropsTable from '../components/PropsTable.astro'
+
+const inputProps = [
+  { name: 'label', type: 'string', default: '—', description: 'Label do campo' },
+  { name: 'helperText', type: 'string', default: '—', description: 'Texto auxiliar exibido abaixo do campo' },
+  { name: 'error', type: 'string', default: '—', description: 'Mensagem de erro (borda vermelha + aria-invalid)' },
+  { name: 'leftElement', type: 'ReactNode', default: '—', description: 'Elemento posicionado à esquerda dentro do input' },
+  { name: 'rightElement', type: 'ReactNode', default: '—', description: 'Elemento posicionado à direita dentro do input' },
+  { name: 'disabled', type: 'boolean', default: 'false', description: 'Desabilita o campo' },
+]
+---
+<DocsLayout title="Input">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-[#0D1B26] mb-2">Input</h1>
+    <p class="text-[#4A6070] text-base">Campo de texto com suporte a label, helper text, mensagem de erro e elementos decorativos.</p>
+    <code class="text-xs font-mono text-[#0097D6] bg-[#EBF4FB] px-2 py-1 rounded mt-2 inline-block">import {'{ Input }'} from '@iit/ui'</code>
+  </div>
+
+  <h2 class="text-lg font-semibold text-[#0D1B26] mb-4">Variantes</h2>
+
+  <ComponentDemo title="Default" code={`<Input placeholder="Digite algo..." />`}>
+    <div class="w-72">
+      <input class="w-full rounded-lg border border-[#D0DDE6] bg-white px-3 py-2 text-sm text-[#0D1B26] placeholder:text-[#8A9FAF] focus:outline-none focus:ring-2 focus:ring-[#0097D6]" placeholder="Digite algo..." />
+    </div>
+  </ComponentDemo>
+
+  <ComponentDemo title="Com label" code={`<Input label="Email" placeholder="voce@exemplo.com" />`}>
+    <div class="w-72 flex flex-col gap-1.5">
+      <label class="text-sm font-medium text-[#0D1B26]">Email</label>
+      <input class="w-full rounded-lg border border-[#D0DDE6] bg-white px-3 py-2 text-sm text-[#0D1B26] placeholder:text-[#8A9FAF] focus:outline-none focus:ring-2 focus:ring-[#0097D6]" placeholder="voce@exemplo.com" type="email" />
+    </div>
+  </ComponentDemo>
+
+  <ComponentDemo title="Com helperText" code={`<Input label="Senha" helperText="Mínimo 8 caracteres" type="password" />`}>
+    <div class="w-72 flex flex-col gap-1.5">
+      <label class="text-sm font-medium text-[#0D1B26]">Senha</label>
+      <input class="w-full rounded-lg border border-[#D0DDE6] bg-white px-3 py-2 text-sm text-[#0D1B26] placeholder:text-[#8A9FAF] focus:outline-none focus:ring-2 focus:ring-[#0097D6]" placeholder="••••••••" type="password" />
+      <p class="text-xs text-[#8A9FAF]">Mínimo 8 caracteres</p>
+    </div>
+  </ComponentDemo>
+
+  <ComponentDemo title="Com erro" code={`<Input label="Email" error="Email inválido" value="nao-e-email" />`}>
+    <div class="w-72 flex flex-col gap-1.5">
+      <label class="text-sm font-medium text-[#0D1B26]">Email</label>
+      <input class="w-full rounded-lg border border-red-400 bg-white px-3 py-2 text-sm text-[#0D1B26] focus:outline-none focus:ring-2 focus:ring-red-500" value="nao-e-email" aria-invalid="true" />
+      <p class="text-xs text-red-500" role="alert">Email inválido</p>
+    </div>
+  </ComponentDemo>
+
+  <ComponentDemo title="Com leftElement" code={`<Input leftElement={<span>🔍</span>} placeholder="Buscar..." />`}>
+    <div class="w-72 relative flex items-center">
+      <div class="absolute left-3 text-[#8A9FAF] pointer-events-none">🔍</div>
+      <input class="w-full rounded-lg border border-[#D0DDE6] bg-white pl-9 pr-3 py-2 text-sm text-[#0D1B26] placeholder:text-[#8A9FAF] focus:outline-none focus:ring-2 focus:ring-[#0097D6]" placeholder="Buscar..." />
+    </div>
+  </ComponentDemo>
+
+  <ComponentDemo title="Com rightElement" code={`<Input rightElement={<span>📅</span>} placeholder="DD/MM/AAAA" />`}>
+    <div class="w-72 relative flex items-center">
+      <input class="w-full rounded-lg border border-[#D0DDE6] bg-white pl-3 pr-9 py-2 text-sm text-[#0D1B26] placeholder:text-[#8A9FAF] focus:outline-none focus:ring-2 focus:ring-[#0097D6]" placeholder="DD/MM/AAAA" />
+      <div class="absolute right-3 text-[#8A9FAF] pointer-events-none">📅</div>
+    </div>
+  </ComponentDemo>
+
+  <ComponentDemo title="Disabled" code={`<Input disabled label="Bloqueado" value="Não editável" />`}>
+    <div class="w-72 flex flex-col gap-1.5">
+      <label class="text-sm font-medium text-[#0D1B26]">Bloqueado</label>
+      <input disabled class="w-full rounded-lg border border-[#D0DDE6] bg-white px-3 py-2 text-sm text-[#0D1B26] opacity-40 cursor-not-allowed" value="Não editável" />
+    </div>
+  </ComponentDemo>
+
+  <h2 class="text-lg font-semibold text-[#0D1B26] mb-4 mt-8">Props</h2>
+  <PropsTable props={inputProps} />
+</DocsLayout>

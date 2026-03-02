@@ -1,0 +1,54 @@
+---
+import DocsLayout from '../layouts/DocsLayout.astro'
+import ComponentDemo from '../components/ComponentDemo.astro'
+import PropsTable from '../components/PropsTable.astro'
+
+const badgeProps = [
+  { name: 'variant', type: "'neutral' | 'success' | 'warning' | 'error' | 'info' | 'brand'", default: "'neutral'", description: 'Estilo semântico do badge' },
+  { name: 'dot', type: 'boolean', default: 'false', description: 'Exibe um ponto indicador colorido antes do texto' },
+]
+---
+<DocsLayout title="Badge">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-[#0D1B26] mb-2">Badge</h1>
+    <p class="text-[#4A6070] text-base">Rótulos compactos para indicar status, categorias ou estados semânticos.</p>
+    <code class="text-xs font-mono text-[#0097D6] bg-[#EBF4FB] px-2 py-1 rounded mt-2 inline-block">import {'{ Badge }'} from '@iit/ui'</code>
+  </div>
+
+  <h2 class="text-lg font-semibold text-[#0D1B26] mb-4">Variantes</h2>
+
+  <ComponentDemo title="Todas as variantes" code={`<Badge variant="neutral">Neutral</Badge>\n<Badge variant="success">Success</Badge>\n<Badge variant="warning">Warning</Badge>\n<Badge variant="error">Error</Badge>\n<Badge variant="info">Info</Badge>\n<Badge variant="brand">Brand</Badge>`}>
+    <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset bg-[#F5F8FA] text-[#4A6070] ring-[#D0DDE6]">Neutral</span>
+    <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset bg-[#E6FAF5] text-[#00A87E] ring-[#00D6A0]/30">Success</span>
+    <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset bg-[#FEF3C7] text-amber-700 ring-amber-500/30">Warning</span>
+    <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset bg-[#FEE2E2] text-red-600 ring-red-500/30">Error</span>
+    <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset bg-[#EBF4FB] text-[#006FA3] ring-[#0097D6]/30">Info</span>
+    <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset bg-[#0097D6]/10 text-[#006FA3] ring-[#0097D6]/30">Brand</span>
+  </ComponentDemo>
+
+  <h2 class="text-lg font-semibold text-[#0D1B26] mb-4 mt-8">Com dot indicator</h2>
+
+  <ComponentDemo title="dot=true" code={`<Badge variant="success" dot>Online</Badge>\n<Badge variant="error" dot>Offline</Badge>\n<Badge variant="warning" dot>Atenção</Badge>`}>
+    <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset bg-[#E6FAF5] text-[#00A87E] ring-[#00D6A0]/30">
+      <span class="h-1.5 w-1.5 rounded-full bg-[#00D6A0]"></span>Online
+    </span>
+    <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset bg-[#FEE2E2] text-red-600 ring-red-500/30">
+      <span class="h-1.5 w-1.5 rounded-full bg-red-400"></span>Offline
+    </span>
+    <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset bg-[#FEF3C7] text-amber-700 ring-amber-500/30">
+      <span class="h-1.5 w-1.5 rounded-full bg-amber-400"></span>Atenção
+    </span>
+    <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset bg-[#EBF4FB] text-[#006FA3] ring-[#0097D6]/30">
+      <span class="h-1.5 w-1.5 rounded-full bg-[#0097D6]"></span>Sincronizando
+    </span>
+    <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset bg-[#0097D6]/10 text-[#006FA3] ring-[#0097D6]/30">
+      <span class="h-1.5 w-1.5 rounded-full bg-[#0097D6]"></span>IIT
+    </span>
+    <span class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset bg-[#F5F8FA] text-[#4A6070] ring-[#D0DDE6]">
+      <span class="h-1.5 w-1.5 rounded-full bg-[#8A9FAF]"></span>Inativo
+    </span>
+  </ComponentDemo>
+
+  <h2 class="text-lg font-semibold text-[#0D1B26] mb-4 mt-8">Props</h2>
+  <PropsTable props={badgeProps} />
+</DocsLayout>

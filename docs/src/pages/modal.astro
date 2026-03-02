@@ -1,0 +1,66 @@
+---
+import DocsLayout from '../layouts/DocsLayout.astro'
+import PropsTable from '../components/PropsTable.astro'
+import ModalDemo from '../components/demos/ModalDemo'
+
+const modalProps = [
+  { name: 'open', type: 'boolean', default: '—', description: 'Controla a visibilidade do modal (obrigatório)' },
+  { name: 'onClose', type: '() => void', default: '—', description: 'Callback ao fechar (botão X ou overlay)' },
+  { name: 'title', type: 'string', default: '—', description: 'Título do modal' },
+  { name: 'description', type: 'string', default: '—', description: 'Subtítulo/descrição do modal' },
+  { name: 'size', type: "'sm' | 'md' | 'lg' | 'xl'", default: "'md'", description: 'Largura máxima do painel' },
+  { name: 'hideCloseButton', type: 'boolean', default: 'false', description: 'Oculta o botão X de fechamento' },
+]
+---
+<DocsLayout title="Modal">
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-[#0D1B26] mb-2">Modal</h1>
+    <p class="text-[#4A6070] text-base">Diálogo flutuante com overlay, trap de foco, fechar por ESC e clique no overlay. Controlado via prop <code class="font-mono text-[#0097D6]">open</code>.</p>
+    <code class="text-xs font-mono text-[#0097D6] bg-[#EBF4FB] px-2 py-1 rounded mt-2 inline-block">import {'{ Modal }'} from '@iit/ui'</code>
+  </div>
+
+  <h2 class="text-lg font-semibold text-[#0D1B26] mb-4">Demo interativo</h2>
+  <p class="text-sm text-[#4A6070] mb-4">Clique nos botões abaixo para ver o Modal funcionando em tempo real:</p>
+
+  <ModalDemo client:load />
+
+  <h2 class="text-lg font-semibold text-[#0D1B26] mb-4 mt-8">Código de exemplo</h2>
+  <div class="rounded-xl border border-[#D0DDE6] overflow-hidden mb-8">
+    <div class="border-b border-[#D0DDE6] px-5 py-3 bg-[#F5F8FA]">
+      <span class="text-sm font-semibold text-[#0D1B26]">Uso básico</span>
+    </div>
+    <pre class="bg-[#0A0F14] text-white p-5 text-xs font-mono overflow-x-auto leading-relaxed"><code>{`import { useState } from 'react'
+import { Modal, Button } from '@iit/ui'
+
+function MyPage() {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}>Abrir Modal</Button>
+
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
+        title="Confirmar ação"
+        description="Esta ação não pode ser desfeita."
+        size="md"
+      >
+        <p>Conteúdo do modal aqui.</p>
+        <div className="flex gap-2 mt-4">
+          <Button variant="destructive" onClick={() => setOpen(false)}>
+            Confirmar
+          </Button>
+          <Button variant="secondary" onClick={() => setOpen(false)}>
+            Cancelar
+          </Button>
+        </div>
+      </Modal>
+    </>
+  )
+}`}</code></pre>
+  </div>
+
+  <h2 class="text-lg font-semibold text-[#0D1B26] mb-4">Props</h2>
+  <PropsTable props={modalProps} />
+</DocsLayout>
