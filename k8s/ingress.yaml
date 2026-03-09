@@ -1,0 +1,17 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: iit-ui-storybook
+  namespace: production
+  labels:
+    app: iit-ui-storybook
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`storybook.institutoitinerante.com.br`)
+      kind: Rule
+      services:
+        - name: iit-ui-storybook
+          port: 80
