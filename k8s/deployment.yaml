@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: storybook
-          image: ghcr.io/apsferreira/iit-ui:latest
+          image: ghcr.io/apsferreira/iit-ui:sha-f8921a5
           ports:
             - containerPort: 80
               name: http
