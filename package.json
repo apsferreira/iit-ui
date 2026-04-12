@@ -23,6 +23,10 @@
     "tailwind.config.ts",
     "src"
   ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc && vite build",
     "dev": "vite build --watch",
