@@ -73,7 +73,7 @@ export default config
 
 ## Logos
 
-As logos do IIT estão disponíveis em `/home/node/.openclaw/design-assets/`.
+As logos do IIT estão disponíveis em `.storybook/` (logo-iit.png e logo-iit-white.png).
 
 **Uso recomendado:**
 - **Logo branca** → fundos escuros (ex: `surfaceDark.base`, `brand.primary`)
