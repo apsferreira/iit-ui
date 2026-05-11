@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { Save, ArrowRight, Check, Trash2, BookOpen, Plus } from 'lucide-react'
 import { Button } from './Button'
 
 const meta = {
@@ -82,7 +83,7 @@ export const Large: Story = {
 export const WithLeftIcon: Story = {
   args: {
     children: 'Salvar arquivo',
-    leftIcon: <span>💾</span>,
+    leftIcon: <Save className="w-4 h-4" />,
   },
 }
 
@@ -90,7 +91,7 @@ export const WithRightIcon: Story = {
   args: {
     children: 'Próximo',
     variant: 'ghost',
-    rightIcon: <span>→</span>,
+    rightIcon: <ArrowRight className="w-4 h-4" />,
   },
 }
 
@@ -124,12 +125,14 @@ export const AllVariants: Story = {
         </div>
       </div>
       <div>
-        <p className="text-xs font-semibold text-[#8A9FAF] uppercase tracking-widest mb-3">Com Ícones</p>
+        <p className="text-xs font-semibold text-[#8A9FAF] uppercase tracking-widest mb-3">Com Ícones (Lucide React)</p>
         <div className="flex flex-wrap gap-3">
-          <Button leftIcon={<span>💾</span>}>Salvar</Button>
-          <Button rightIcon={<span>→</span>} variant="ghost">Próximo</Button>
-          <Button leftIcon={<span>✅</span>} variant="accent">Aprovar</Button>
-          <Button leftIcon={<span>🗑️</span>} variant="destructive">Excluir</Button>
+          <Button leftIcon={<Save className="w-4 h-4" />}>Salvar</Button>
+          <Button rightIcon={<ArrowRight className="w-4 h-4" />} variant="ghost">Próximo</Button>
+          <Button leftIcon={<Check className="w-4 h-4" />} variant="accent">Aprovar</Button>
+          <Button leftIcon={<Trash2 className="w-4 h-4" />} variant="destructive">Excluir</Button>
+          <Button leftIcon={<BookOpen className="w-4 h-4" />} variant="secondary">Abrir livro</Button>
+          <Button leftIcon={<Plus className="w-4 h-4" />} size="sm">Novo</Button>
         </div>
       </div>
       <div>

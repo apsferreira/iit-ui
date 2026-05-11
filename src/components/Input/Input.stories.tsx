@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { Search, Calendar, AtSign, Lock } from 'lucide-react'
 import { Input } from './Input'
 
 const meta = {
@@ -80,7 +81,7 @@ export const WithLeftElement: Story = {
   args: {
     label: 'Buscar',
     placeholder: 'Buscar livros...',
-    leftElement: <span className="text-sm">🔍</span>,
+    leftElement: <Search className="w-4 h-4" />,
   },
 }
 
@@ -88,7 +89,7 @@ export const WithRightElement: Story = {
   args: {
     label: 'Data',
     placeholder: 'DD/MM/AAAA',
-    rightElement: <span className="text-sm">📅</span>,
+    rightElement: <Calendar className="w-4 h-4" />,
   },
 }
 
@@ -104,10 +105,11 @@ export const AllStates: Story = {
   render: () => (
     <div className="flex flex-col gap-5 w-80">
       <Input label="Default" placeholder="Padrão" />
-      <Input label="Com helper" placeholder="Email" helperText="Usaremos apenas para notificações" type="email" />
+      <Input label="Com helper" placeholder="Email" helperText="Usaremos apenas para notificações" type="email" leftElement={<AtSign className="w-4 h-4" />} />
       <Input label="Com erro" defaultValue="valor-invalido" error="Este campo é obrigatório" />
-      <Input label="Com ícone esquerdo" placeholder="Buscar..." leftElement={<span>🔍</span>} />
-      <Input label="Com ícone direito" placeholder="DD/MM/AAAA" rightElement={<span>📅</span>} />
+      <Input label="Buscar (ícone esquerdo)" placeholder="Buscar livros..." leftElement={<Search className="w-4 h-4" />} />
+      <Input label="Senha (ícone direito)" placeholder="Mínimo 8 caracteres" type="password" rightElement={<Lock className="w-4 h-4" />} />
+      <Input label="Data (ícone direito)" placeholder="DD/MM/AAAA" rightElement={<Calendar className="w-4 h-4" />} />
       <Input label="Desabilitado" defaultValue="Somente leitura" disabled />
     </div>
   ),
