@@ -30,7 +30,7 @@ describe('Button', () => {
   it('applies variant classes', () => {
     render(<Button variant="destructive">Delete</Button>)
     const btn = screen.getByRole('button')
-    expect(btn.className).toContain('text-red-400')
+    expect(btn.className).toContain('text-red-600')
   })
 
   it('applies size classes', () => {

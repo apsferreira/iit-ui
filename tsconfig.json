@@ -24,5 +24,13 @@
     }
   },
   "include": ["src"],
-  "exclude": ["src/**/*.test.tsx", "src/**/*.test.ts"]
+  "exclude": [
+    "src/**/*.test.tsx",
+    "src/**/*.test.ts",
+    "src/**/*.native.tsx",
+    "src/**/*.native.ts",
+    "src/**/*.native.stories.tsx",
+    "src/**/*.stories.tsx",
+    "src/**/*.stories.ts"
+  ]
 }
