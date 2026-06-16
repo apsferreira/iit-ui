@@ -123,7 +123,7 @@ export const Modal: React.FC<ModalProps> = ({
           'animate-fadeIn',
           sizeClasses[size],
           className
-        }}
+        )}
       >
         {(title || !hideCloseButton) && (
           <div className="flex items-start justify-between gap-4 p-6 pb-4">

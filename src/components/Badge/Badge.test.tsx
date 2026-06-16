@@ -10,7 +10,7 @@ describe('Badge', () => {
 
   it('applies success variant classes', () => {
     render(<Badge variant="success">OK</Badge>)
-    expect(screen.getByText('OK').className).toContain('text-emerald-400')
+    expect(screen.getByText('OK').className).toContain('text-[#00A87E]')
   })
 
   it('renders dot indicator', () => {
