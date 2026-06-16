@@ -16,19 +16,23 @@
       "react-native": "./src/tokens/index.ts",
       "import": "./dist/tokens/index.js"
     },
-    "./tailwind": "./tailwind.config.ts"
+    "./tailwind": {
+      "source": "./tailwind.config.ts",
+      "default": "./dist/tailwind.config.cjs"
+    }
   },
   "files": [
     "dist",
     "tailwind.config.ts",
-    "src"
+    "src",
+    "dist/tailwind.config.cjs"
   ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com",
     "access": "public"
   },
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && npx esbuild tailwind.config.ts --bundle=false --platform=node --format=cjs --outfile=dist/tailwind.config.cjs",
     "dev": "vite build --watch",
     "test": "vitest run",
     "test:watch": "vitest",
