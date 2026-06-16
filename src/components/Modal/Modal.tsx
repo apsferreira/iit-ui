@@ -120,12 +120,9 @@ export const Modal: React.FC<ModalProps> = ({
         className={cn(
           'relative z-10 w-full rounded-xl border border-[#D0DDE6] bg-white',
           'shadow-2xl shadow-black/10',
-          'animate-[fadeIn_0.15s_ease-out]',
+          'animate-fadeIn',
           sizeClasses[size],
           className
-        )}
-        style={{
-          animation: 'iit-fadeIn 0.15s ease-out',
         }}
       >
         {(title || !hideCloseButton) && (

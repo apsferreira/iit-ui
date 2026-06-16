@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iit-ui-storybook
+  namespace: tools
+  labels:
+    app: iit-ui-storybook
+    part-of: apsferreira
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: iit-ui-storybook
+  template:
+    metadata:
+      labels:
+        app: iit-ui-storybook
+    spec:
+      containers:
+      - name: storybook
+        image: ghcr.io/apsferreira/iit-ui:latest
+        ports:
+        - containerPort: 6006
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 200m
+            memory: 256Mi
